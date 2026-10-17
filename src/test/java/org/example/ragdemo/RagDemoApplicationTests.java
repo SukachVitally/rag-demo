@@ -1,10 +1,9 @@
 package org.example.ragdemo;
 
+import org.example.ragdemo.support.FunctionalTest;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class RagDemoApplicationTests {
+class RagDemoApplicationTests extends FunctionalTest {
 
     @Test
     void contextLoads() {

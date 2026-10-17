@@ -1,3 +1,21 @@
 spring:
   application:
     name: rag-demo
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rag
+    username: rag
+    password: rag
+  sql:
+    init:
+      mode: always
+
+app:
+  olama-client:
+    base-url: http://localhost:11434
+    embed-model: nomic-embed-text
+    chat-model: llama3.1:8b
+
+  chunk:
+    size: 1000
+    overlap: 150

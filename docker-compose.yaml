@@ -1,0 +1,23 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_DB: rag
+      POSTGRES_USER: rag
+      POSTGRES_PASSWORD: rag
+    ports: ["5432:5432"]
+
+  ollama:
+    image: ollama/ollama
+    ports: ["11434:11434"]
+    volumes:
+      - ollama-models:/root/.ollama   # keeps downloaded models between restarts
+
+  ollama-init:
+    image: ollama/ollama
+    depends_on: [ollama]
+    environment:
+      OLLAMA_HOST: ollama:11434
+    entrypoint: ["sh", "-c", "sleep 5 && ollama pull nomic-embed-text && ollama pull llama3.1:8b"]
+volumes:
+  ollama-models:
